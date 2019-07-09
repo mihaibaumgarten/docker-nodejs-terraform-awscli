@@ -16,8 +16,8 @@ RUN apk add --update make git curl curl-dev openssh && \
 RUN apk add --update nodejs nodejs-npm
 
 # Install AWS CLI
-#RUN apk --no-cache add --update python
-#RUN wget "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.zip"
-#RUN unzip awscli-bundle.zip && chmod +x ./awscli-bundle/install
-#RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-#RUN rm awscli-bundle.zip && rm -rf awscli-bundle && rm /var/cache/apk/*
+RUN apk --no-cache add --update python
+RUN wget "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip && chmod +x ./awscli-bundle/install
+RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+RUN rm awscli-bundle.zip && rm -rf awscli-bundle && rm /var/cache/apk/*
