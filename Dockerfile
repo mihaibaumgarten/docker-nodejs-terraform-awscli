@@ -21,3 +21,6 @@ RUN wget "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.
 RUN unzip awscli-bundle.zip && chmod +x ./awscli-bundle/install
 RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 RUN rm awscli-bundle.zip && rm -rf awscli-bundle && rm /var/cache/apk/*
+
+# Install ZIP
+RUN apk --no-cache add --update zip
