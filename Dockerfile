@@ -15,8 +15,14 @@ RUN apk add --update make git curl curl-dev openssh && \
 # Install latest nodejs  
 RUN apk add --update nodejs nodejs-npm
 
+# Install dependencies of canvas needed to build webpack
+RUN apk add --update \
+    && apk add --no-cache ffmpeg opus pixman cairo pango giflib ca-certificates \
+    && apk add --no-cache --virtual .build-deps git curl build-base jpeg-dev pixman-dev \
+    cairo-dev pango-dev pangomm-dev libjpeg-turbo-dev giflib-dev freetype-dev python g++ make nodejs npm chromium jq
+#RUN apk --no-cache add --update python
+
 # Install AWS CLI
-RUN apk --no-cache add --update python
 RUN wget "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -O "awscli-bundle.zip"
 RUN unzip awscli-bundle.zip && chmod +x ./awscli-bundle/install
 RUN ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
